@@ -1,0 +1,374 @@
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+a {
+    background-color: transparent;
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+img {
+    border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+textarea {
+    overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+details {
+    display: block;
+}
+
+summary {
+    display: list-item;
+}
+
+template {
+    display: none;
+}
+
+[hidden] {
+    display: none;
+}
+
+/* main */
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+    height: 100%;
+    color: #101010;
+}
+
+a {
+    text-decoration: none;
+    color: #101010;
+}
+
+.grid {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 68px 68px 68px auto;
+}
+@media(max-width: 1200px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr 130px 130px 130px 1fr 1fr 1fr;
+    }
+}
+@media(max-width: 900px) {
+    .grid {
+        grid-template-rows: 30px 50px 30px auto;
+    }
+}
+@media(max-width: 600px) {
+    .grid {
+        grid-template-columns: 0 1fr 1fr 130px 130px 130px 1fr 1fr 0;
+    }
+}
+@media(max-width: 500px) {
+    .grid {
+        grid-template-columns: 0 0 1fr 130px 130px 130px 1fr 0 0;
+    }
+}
+
+.logo {
+    grid-area: 2 / 4 / 3 / 7;
+    width: 100%;
+    font-family: monospace;
+    font-size: 36px;
+    color: #1864ab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eat {
+    grid-area: 3 / 4 / 4 / 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: #1864ab;
+    background: #74c0fc;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.five-up {
+    grid-area: 1 / 5 / 2 / 6;
+    background: #4dabf7;
+}
+
+.five-down {
+    grid-area: 3 / 5 / 4 / 6;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: #1864ab;
+    background: #4dabf7;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.drink {
+    grid-area: 3 / 6 / 4 / 7;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: #1864ab;
+    background: #339af0;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.one {
+    grid-area: 1 / 1 / 4 / 2;
+    background: #e7f5ff;
+}
+
+.two {
+    grid-area: 1 / 2 / 4 / 3;
+    background: #d0ebff;
+}
+
+.three {
+    grid-area: 1 / 3 / 4 / 4;
+    background: #a5d8ff;
+}
+
+.four {
+    grid-area: 1 / 4 / 2 / 5;
+    background: #74c0fc;
+}
+
+.six {
+    grid-area: 1 / 6 / 2 / 7;
+    background: #339af0;
+}
+
+.seven {
+    grid-area: 1 / 7 / 4 / 8;
+    background: #228be6;
+}
+
+.eight {
+    grid-area: 1 / 8 / 4 / 9;
+    background: #1c7ed6;
+}
+
+.nine {
+    grid-area: 1 / 9 / 4 / 10;
+    background: #1864ab;
+}
+
+.places {
+    grid-area: 4 / 4 / 5 / 7;
+    width: 100%;
+}
+
+.places-item {
+    background: #e7f5ff;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    height: 95px;
+}
+
+.places-item-head {
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+@media(max-width: 400px) {
+    .places-item-head {
+        width: 100px;
+    }
+}
+
+.places-item-head-vote {
+    display: flex;
+    justify-content: center;
+}
+
+.places-item-head-vote > img {
+    width: 30px;
+}
+
+.places-item-head-ranking {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-family: monospace;
+}
+
+.places-item-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.places-item-body-title {
+    font-size: 24px;
+}

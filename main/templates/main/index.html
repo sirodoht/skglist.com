@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Most voted places in Thessaloniki.">
+
+    <title>skg list - most voted places in THESSALONIKI</title>
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    <div class="grid">
+        <div class="logo">
+            skg list
+        </div>
+        <div class="one">
+        </div>
+        <div class="two">
+        </div>
+        <div class="three">
+        </div>
+        <div class="four">
+        </div>
+        <div class="six">
+        </div>
+        <div class="seven">
+        </div>
+        <div class="eight">
+        </div>
+        <div class="nine">
+        </div>
+        <div class="places">
+            {% for item in places %}
+            <div class="places-item">
+                <div class="places-item-head">
+                    <a href="#" class="places-item-head-vote">
+                        <img src="{% static 'images/arrow.svg' %}" alt="vote icon">
+                    </a>
+                    <div class="places-item-head-ranking">{{ forloop.counter }}</div>
+                </div>
+                <a href="#" class="places-item-body">
+                    <div class="places-item-body-title">{{ item.name }}</div>
+                    <div class="places-item-body-address">{{ item.address }}</div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="eat">
+            <!-- eat -->
+        </div>
+        <div class="five-down">
+        </div>
+        <div class="five-up">
+        </div>
+        <div class="drink">
+            <!-- drink -->
+        </div>
+    </div>
+</body>
+</html>

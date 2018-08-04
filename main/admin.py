@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+
+# Place
+class PlaceAdmin(admin.ModelAdmin):
+    list_display = ("name", "address", "votes", "link", "is_eat", "is_drink", "id")
+
+
+admin.site.register(models.Place, PlaceAdmin)
