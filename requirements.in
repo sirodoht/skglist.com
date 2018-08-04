@@ -1,0 +1,9 @@
+django
+whitenoise
+uwsgi
+dj-database-url
+black
+python-dotenv
+isort
+flake8
+psycopg2-binary
