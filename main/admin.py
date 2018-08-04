@@ -17,3 +17,11 @@ class AnalyticAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Analytic, AnalyticAdmin)
+
+
+# Vote
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ("ip", "date", "place")
+
+
+admin.site.register(models.Vote, VoteAdmin)
