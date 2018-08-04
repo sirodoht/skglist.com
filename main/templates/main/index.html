@@ -38,7 +38,7 @@
             {% if messages %}
             <div class="alert">
                 {% for message in messages %}
-                    {{ message }}
+                    {{ message }}<br>
                 {% endfor %}
             </div>
             {% endif %}
@@ -90,7 +90,7 @@
             voteElems[i].addEventListener('click', function (event) {
                 event.preventDefault();
                 var placeId = event.target.parentNode.dataset.id;
-                var url = document.location.href + 'vote/';
+                var url = document.location.origin + '/vote/';
                 var xhr = new XMLHttpRequest();
                 var body = {
                     'place': placeId,
@@ -101,6 +101,7 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         window.location.reload(true);
+                        scroll(0, 0);
                     }
                 };
                 xhr.send(JSON.stringify(body));

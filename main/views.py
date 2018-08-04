@@ -34,5 +34,6 @@ def vote(request):
         place.votes += 1
         place.save()
         Vote(ip=ip, place=place).save()
-        messages.success(request, "Vote registered")
+        messages.success(request, "Vote registered.")
+        messages.success(request, "You can vote again in 24 hours.")
         return JsonResponse(status=200, data={"message": "Success."})
