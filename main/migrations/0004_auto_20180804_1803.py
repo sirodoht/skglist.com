@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('main', '0003_vote'),
-    ]
+    dependencies = [("main", "0003_vote")]
 
     operations = [
         migrations.AlterField(
-            model_name='place',
-            name='votes',
+            model_name="place",
+            name="votes",
             field=models.PositiveIntegerField(default=0),
-        ),
+        )
     ]

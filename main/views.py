@@ -1,4 +1,5 @@
 import json
+import datetime
 
 from django.contrib import messages
 from django.http import JsonResponse
@@ -28,7 +29,7 @@ def vote(request):
         place = Place.objects.get(id=place_id)
         ip_vote = Vote.objects.filter(ip=ip, place=place).order_by("-date").first()
         if ip_vote:
-            if ip_vote.date < timezone.now():
+            if ip_vote.date + datetime.timedelta(days=1) > timezone.now():
                 return JsonResponse(status=400, data={"message": "Error."})
         place.votes += 1
         place.save()
