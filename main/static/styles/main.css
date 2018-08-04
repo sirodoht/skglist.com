@@ -212,7 +212,7 @@ a {
 }
 @media(max-width: 500px) {
     .grid {
-        grid-template-columns: 0 0 1fr 130px 130px 130px 1fr 0 0;
+        grid-template-columns: 0 0 1fr auto auto auto 1fr 0 0;
     }
 }
 
@@ -329,6 +329,7 @@ a {
     background: #e7f5ff;
     margin-top: 15px;
     margin-bottom: 15px;
+    padding-right: 5px;
     display: flex;
     flex-direction: row;
     height: 95px;
