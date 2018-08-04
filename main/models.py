@@ -6,7 +6,7 @@ from django.utils import timezone
 class Place(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    votes = models.PositiveIntegerField()
+    votes = models.PositiveIntegerField(default=0)
     link = models.URLField()
     is_eat = models.BooleanField()
     is_drink = models.BooleanField()
