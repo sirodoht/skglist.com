@@ -372,3 +372,14 @@ a {
 .places-item-body-title {
     font-size: 24px;
 }
+
+.alert {
+    background: #1864ab;
+    color: #fff;
+    font-family: monospace;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

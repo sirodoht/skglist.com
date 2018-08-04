@@ -9,3 +9,11 @@ class PlaceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Place, PlaceAdmin)
+
+
+# Analytic
+class AnalyticAdmin(admin.ModelAdmin):
+    list_display = ("ip", "user", "created_at", "path", "querystring")
+
+
+admin.site.register(models.Analytic, AnalyticAdmin)
