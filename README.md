@@ -53,15 +53,15 @@ uwsgi --ini=uwsgi.ini -H venv/
 ## Colors
 
 The 9 shades of blue. Light to dark.
-```css
-#e7f5ff;
-#d0ebff;
-#a5d8ff;
-#74c0fc;
-#339af0;
-#228be6;
-#1c7ed6;
-#1864ab;
+```
+#e7f5ff
+#d0ebff
+#a5d8ff
+#74c0fc
+#339af0
+#228be6
+#1c7ed6
+#1864ab
 ```
 
 
