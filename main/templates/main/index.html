@@ -15,6 +15,11 @@
 </head>
 <body>
     <div class="grid">
+        <div class="alert" id="alert">
+            Vote registered.
+            <br>You can vote again in 24&nbsp;hours.
+        </div>
+
         <a href="{% url 'main:index' %}" class="logo">
             skg list
         </a>
@@ -35,14 +40,10 @@
         <div class="nine">
         </div>
         <div class="places">
-            {% if messages %}
-            <div class="alert">
-                {% for message in messages %}
-                    {{ message }}<br>
-                {% endfor %}
+            <div class="places-message">
+                Click on the arrow to&nbsp;vote.
+                <br>You can vote a place once every&nbsp;24h.
             </div>
-            {% endif %}
-
             {% for item in places %}
             <div class="places-item">
                 <div class="places-item-head">
@@ -104,8 +105,14 @@
                 xhr.setRequestHeader('X-CSRFToken', getCsrf());
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        window.location.reload(true);
-                        scroll(0, 0);
+                        document.getElementById('alert').classList.add('alert-visible');
+                        setTimeout(function () {
+                            document.getElementById('alert').classList.add('alert-hidden');
+                            setTimeout(function () {
+                                document.getElementById('alert').classList.remove('alert-visible');
+                                document.getElementById('alert').classList.remove('alert-hidden');
+                            }, 200);
+                        }, 800);
                     }
                 };
                 xhr.send(JSON.stringify(body));
