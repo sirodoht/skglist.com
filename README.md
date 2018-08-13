@@ -50,6 +50,21 @@ uwsgi --ini=uwsgi.ini -H venv/
 > Note: The `uwsgi` method does not read the `.env` file, so in this case you need to set the env vars in your shell.
 
 
+## Colors
+
+The 9 shades of blue. Light to dark.
+```css
+#e7f5ff;
+#d0ebff;
+#a5d8ff;
+#74c0fc;
+#339af0;
+#228be6;
+#1c7ed6;
+#1864ab;
+```
+
+
 ## Code linting & formatting
 
 ```
