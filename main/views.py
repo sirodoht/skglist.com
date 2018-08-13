@@ -18,6 +18,20 @@ def index(request):
     return render(request, "main/index.html", {"places": places})
 
 
+@require_safe
+def food(request):
+    log_analytic(request)
+    places = Place.objects.all().filter(is_eat=True).order_by("-votes")
+    return render(request, "main/index.html", {"places": places})
+
+
+@require_safe
+def drink(request):
+    log_analytic(request)
+    places = Place.objects.all().filter(is_drink=True).order_by("-votes")
+    return render(request, "main/index.html", {"places": places})
+
+
 @require_http_methods(["POST"])
 def vote(request):
     if request.method == "POST":

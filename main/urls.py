@@ -8,5 +8,7 @@ app_name = "main"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("food/", views.food, name="food"),
+    path("drink/", views.drink, name="drink"),
     path("vote/", views.vote, name="vote"),
 ]
