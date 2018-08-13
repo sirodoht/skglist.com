@@ -243,6 +243,16 @@ a {
     justify-content: center;
 }
 
+.eat-icon {
+    width: 30px;
+    transform: translateY(3px);
+}
+@media (max-width: 900px) {
+    .eat-icon {
+        width: 20px;
+    }
+}
+
 .five-up {
     grid-area: 1 / 5 / 2 / 6;
     background: #4dabf7;
@@ -278,6 +288,16 @@ a {
     text-align: center;
     align-self: center;
     justify-content: center;
+}
+
+.drink-icon {
+    width: 30px;
+    transform: translateY(3px);
+}
+@media (max-width: 900px) {
+    .drink-icon {
+        width: 20px;
+    }
 }
 
 .one {

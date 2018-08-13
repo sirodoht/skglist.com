@@ -59,14 +59,18 @@
             {% endfor %}
         </div>
         <div class="eat">
-            <!-- eat -->
+            <a href="{% url 'main:food' %}" class="eat-icon">
+                <img src="{% static 'images/cereal.svg' %}" alt="food icon">
+            </a>
         </div>
         <div class="five-down">
         </div>
         <div class="five-up">
         </div>
         <div class="drink">
-            <!-- drink -->
+            <a href="{% url 'main:drink' %}" class="drink-icon">
+                <img src="{% static 'images/wine.svg' %}" alt="wine icon">
+            </a>
         </div>
     </div>
     {% csrf_token %}
