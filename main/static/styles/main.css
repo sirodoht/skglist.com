@@ -200,11 +200,6 @@ a {
         grid-template-columns: 1fr 1fr 1fr 130px 130px 130px 1fr 1fr 1fr;
     }
 }
-@media(max-width: 900px) {
-    .grid {
-        grid-template-rows: 30px 50px 30px auto;
-    }
-}
 @media(max-width: 600px) {
     .grid {
         grid-template-columns: 0 1fr 1fr 130px 130px 130px 1fr 1fr 0;
@@ -247,11 +242,6 @@ a {
     width: 30px;
     transform: translateY(3px);
 }
-@media (max-width: 900px) {
-    .eat-icon {
-        width: 20px;
-    }
-}
 
 .five-up {
     grid-area: 1 / 5 / 2 / 6;
@@ -293,11 +283,6 @@ a {
 .drink-icon {
     width: 30px;
     transform: translateY(3px);
-}
-@media (max-width: 900px) {
-    .drink-icon {
-        width: 20px;
-    }
 }
 
 .one {
