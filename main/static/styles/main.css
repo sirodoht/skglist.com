@@ -216,10 +216,22 @@ a {
     width: 100%;
     font-family: monospace;
     font-size: 36px;
+    line-height: 0.9;
     color: #1864ab;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+@media(max-width: 1300px) {
+    .logo {
+        font-size: 30px;
+    }
+}
+@media(max-width: 600px) {
+    .logo {
+        font-size: 26px;
+    }
 }
 
 .eat {
