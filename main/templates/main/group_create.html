@@ -8,8 +8,13 @@
             List created.
         </div>
 
+        <div class="scroll" title="Scroll down." id="scroll">
+            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
+        </div>
+
         <a href="{% url 'main:index' %}" class="logo">
             skg list
+            / new list
         </a>
         <div class="one">
         </div>
@@ -57,7 +62,7 @@
             </a>
         </div>
         <div class="five-down">
-            <a href="{% url 'main:group_create' %}" class="list-icon" title="Create your own list." style="opacity: 0;">
+            <a href="{% url 'main:group_create' %}" class="list-icon" title="Create your own list.">
                 <img src="{% static 'images/list.svg' %}" alt="list icon">
             </a>
         </div>
@@ -131,12 +136,39 @@
             xhr.setRequestHeader('X-CSRFToken', getCsrf());
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log('xhr.response:', xhr.response);
                     var resData = JSON.parse(xhr.response);
                     document.location.pathname = '/list/' + resData.route;
                 }
             };
             xhr.send(JSON.stringify(body));
         }
+
+        function scrollToBottom() {
+            window.scroll({
+                top: document.documentElement.scrollHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        function scrollToTop() {
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        document.getElementById('scroll').addEventListener('click', scrollToBottom);
+        window.onscroll = function() {
+            if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
+                document.getElementById('scroll').removeEventListener('click', scrollToBottom);
+                document.getElementById('scroll').addEventListener('click', scrollToTop);
+            }
+            if (window.scrollY === 0) {
+                document.getElementById('scroll').removeEventListener('click', scrollToTop);
+                document.getElementById('scroll').addEventListener('click', scrollToBottom);
+            }
+        };
     </script>
 {% endblock %}

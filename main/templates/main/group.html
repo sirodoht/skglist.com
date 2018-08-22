@@ -9,6 +9,10 @@
             <br>You can vote again in 24&nbsp;hours.
         </div>
 
+        <div class="scroll" title="Scroll down." id="scroll">
+            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
+        </div>
+
         <a href="{% url 'main:group' group.route %}" class="logo">
             {{ group.name }}
         </a>
@@ -44,7 +48,7 @@
             <div class="places-item">
                 <div class="places-item-head">
                     <a href="#" class="places-item-head-vote" data-id="{{ item.id }}">
-                        <img src="{% static 'images/arrow.svg' %}" alt="vote icon">
+                        <img src="{% static 'images/arrow-up.svg' %}" alt="vote icon">
                     </a>
                     <div class="places-item-head-ranking">{{ forloop.counter }}</div>
                 </div>
@@ -56,14 +60,8 @@
             {% endfor %}
         </div>
         <div class="eat">
-            <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible." style="opacity: 0;">
-                <img src="{% static 'images/cereal.svg' %}" alt="food icon">
-            </a>
         </div>
         <div class="five-down">
-            <a href="{% url 'main:group_create' %}" class="list-icon" title="Create your own list." style="opacity: 0;">
-                <img src="{% static 'images/list.svg' %}" alt="list icon">
-            </a>
         </div>
         <div class="five-up">
             <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
@@ -71,9 +69,6 @@
             </a>
         </div>
         <div class="drink">
-            <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable." style="opacity: 0;">
-                <img src="{% static 'images/wine.svg' %}" alt="wine icon">
-            </a>
         </div>
     </div>
     {% csrf_token %}
@@ -120,5 +115,33 @@
                 xhr.send(JSON.stringify(body));
             });
         }
+
+        function scrollToBottom() {
+            window.scroll({
+                top: document.documentElement.scrollHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        function scrollToTop() {
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        document.getElementById('scroll').addEventListener('click', scrollToBottom);
+        window.onscroll = function() {
+            if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
+                document.getElementById('scroll').removeEventListener('click', scrollToBottom);
+                document.getElementById('scroll').addEventListener('click', scrollToTop);
+            }
+            if (window.scrollY === 0) {
+                document.getElementById('scroll').removeEventListener('click', scrollToTop);
+                document.getElementById('scroll').addEventListener('click', scrollToBottom);
+            }
+        };
     </script>
 {% endblock %}
