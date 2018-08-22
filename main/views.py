@@ -1,14 +1,14 @@
-import json
 import datetime
+import json
 
-from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
+from django.utils.html import escape
 from django.views.decorators.http import require_http_methods, require_safe
 
-from .helpers import get_client_ip, log_analytic
-from .models import Place, Vote
+from .helpers import get_client_ip, get_group_route, log_analytic
+from .models import Group, Membership, Place, Vote
 
 
 @require_safe
@@ -49,3 +49,27 @@ def vote(request):
         place.save()
         Vote(ip=ip, place=place).save()
         return JsonResponse(status=200, data={"message": "Success."})
+
+
+@require_http_methods(["POST", "GET", "HEAD"])
+def group_create(request):
+    places = Place.objects.all().order_by("-votes")
+    if request.method == "POST":
+        body = request.body.decode("utf-8")
+        data = json.loads(body)
+        new_group = Group.objects.create(
+            name=escape(data["name"]), route=get_group_route()
+        )
+        for place_char in data["places"]:
+            place_id = int(escape(place_char))
+            place = Place.objects.get(id=place_id)
+            Membership.objects.create(group=new_group, place=place)
+        return JsonResponse(status=200, data={"route": new_group.route})
+
+    return render(request, "main/group_create.html", {"places": places})
+
+
+@require_safe
+def group(request, route):
+    group = Group.objects.get(route=route)
+    return render(request, "main/group.html", {"group": group})
