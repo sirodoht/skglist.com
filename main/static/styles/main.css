@@ -355,6 +355,11 @@ a {
 .places-item-head-vote {
     display: flex;
     justify-content: center;
+    transition: all 0.15s ease-out;
+}
+
+.places-item-head-vote:hover {
+    transform: translateY(-2px);
 }
 
 .places-item-head-vote > img {
