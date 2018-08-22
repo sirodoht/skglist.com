@@ -246,6 +246,23 @@ a {
 .five-up {
     grid-area: 1 / 5 / 2 / 6;
     background: #4dabf7;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: #1864ab;
+    background: #4dabf7;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.home-icon {
+    width: 30px;
+    transform: translateY(3px);
 }
 
 .five-down {
@@ -262,6 +279,11 @@ a {
     text-align: center;
     align-self: center;
     justify-content: center;
+}
+
+.list-icon {
+    width: 30px;
+    transform: translateY(3px);
 }
 
 .drink {
@@ -366,6 +388,19 @@ a {
     width: 30px;
 }
 
+.places-item-head-choose {
+    display: flex;
+    justify-content: center;
+}
+
+.places-item-head-choose > img {
+    width: 30px;
+}
+
+.places-item-head-choose-check {
+    display: none;
+}
+
 .places-item-head-ranking {
     font-size: 32px;
     display: flex;
@@ -382,6 +417,44 @@ a {
 
 .places-item-body-title {
     font-size: 24px;
+}
+
+.places-list {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.places-list-input {
+    display: block;
+    box-sizing: border-box;
+    border: 3px solid #4dabf7;
+    font-size: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.places-list-input::placeholder {
+    color: #ccc;
+}
+
+.places-list-submit {
+    cursor: pointer;
+    background: #4dabf7;
+    color: #fff;
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border: none;
 }
 
 .places-message {
@@ -417,6 +490,7 @@ a {
 .alert-visible {
     animation: slideInDown 0.2s forwards;
     opacity: 1;
+    z-index: 10;
 }
 
 .alert-hidden {
