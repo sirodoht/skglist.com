@@ -522,6 +522,7 @@ a {
 
 .places-create-center {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .places-create-submit {
@@ -536,6 +537,7 @@ a {
     padding-right: 15px;
     padding-left: 15px;
     border: none;
+    border-radius: 0;
 }
 
 .places-message {
