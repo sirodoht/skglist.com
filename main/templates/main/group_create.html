@@ -1,19 +1,8 @@
+{% extends 'main/scaffold.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="most voted places in THESSALONIKI">
-
-    <title>skg list</title>
-
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-</head>
-<body>
+{% block content %}
     <div class="grid">
         <div class="alert" id="alert">
             List created.
@@ -150,5 +139,4 @@
             xhr.send(JSON.stringify(body));
         }
     </script>
-</body>
-</html>
+{% endblock %}
