@@ -1,0 +1,86 @@
+{% extends 'main/scaffold.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="grid">
+        <a href="{% url 'main:index' %}" class="logo">
+            skg list
+            / submit
+        </a>
+        <div class="one">
+        </div>
+        <div class="two">
+        </div>
+        <div class="three">
+        </div>
+        <div class="four">
+        </div>
+        <div class="six">
+        </div>
+        <div class="seven">
+        </div>
+        <div class="eight">
+        </div>
+        <div class="nine">
+        </div>
+        <div class="places">
+            <div class="places-message">
+                Submit a place.
+            </div>
+            <form action="{% url 'main:places_create' %}" method="post">
+                <div class="places-create-group">
+                    <label for="id_name">Name</label>
+                    <input type="text" name="name" maxlength="100" required id="id_name" class="places-create-input">
+                </div>
+
+                <div class="places-create-group">
+                    <label for="id_address">Address</label>
+                    <input type="text" name="address" maxlength="100" required id="id_address" class="places-create-input">
+                </div>
+
+                <div class="places-create-group">
+                    <label for="id_link">Link</label>
+                    <input type="url" name="link" maxlength="200" required id="id_link" class="places-create-input">
+                </div>
+
+                <div class="places-create-group">
+                    <label for="id_is_eat">
+                        <input type="checkbox" name="is_eat" id="id_is_eat">
+                        Food place?
+                    </label>
+                </div>
+
+                <div class="places-create-group">
+                    <label for="id_is_drink">
+                        <input type="checkbox" name="is_drink" id="id_is_drink">
+                        Drink place?
+                    </label>
+                </div>
+
+                {% csrf_token %}
+
+                <div class="places-create-center">
+                    <input type="submit" value="Submit" class="places-create-submit">
+                </div>
+            </form>
+        </div>
+        <div class="eat">
+            <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible.">
+                <img src="{% static 'images/cereal.svg' %}" alt="food icon">
+            </a>
+        </div>
+        <div class="five-down">
+            <a href="{% url 'main:group_create' %}" class="list-icon" title="Create your own list.">
+                <img src="{% static 'images/list.svg' %}" alt="list icon">
+            </a>
+        </div>
+        <div class="five-up">
+        </div>
+        <div class="drink">
+            <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
+                <img src="{% static 'images/wine.svg' %}" alt="wine icon">
+            </a>
+        </div>
+    </div>
+{% endblock %}
