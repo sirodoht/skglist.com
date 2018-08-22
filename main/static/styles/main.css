@@ -526,6 +526,7 @@ a {
 }
 
 .places-create-submit {
+    cursor: pointer;
     background: #4dabf7;
     color: #fff;
     font-family: monospace;
