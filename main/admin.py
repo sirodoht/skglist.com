@@ -25,3 +25,19 @@ class VoteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Vote, VoteAdmin)
+
+
+# Group
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ("route", "name", "created_at", "visits")
+
+
+admin.site.register(models.Group, GroupAdmin)
+
+
+# Membership
+class MembershipAdmin(admin.ModelAdmin):
+    list_display = ("id", "group", "place")
+
+
+admin.site.register(models.Membership, MembershipAdmin)
