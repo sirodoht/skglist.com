@@ -76,4 +76,6 @@ def group_create(request):
 @require_safe
 def group(request, route):
     group = Group.objects.get(route=route)
+    group.visits += 1
+    group.save()
     return render(request, "main/group.html", {"group": group})
