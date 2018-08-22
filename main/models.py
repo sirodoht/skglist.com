@@ -33,3 +33,22 @@ class Analytic(models.Model):
 
     def __str__(self):
         return self.ip
+
+
+class Group(models.Model):
+    route = models.CharField(max_length=30)
+    created_at = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=100)
+    visits = models.PositiveIntegerField(default=0)
+    members = models.ManyToManyField(Place, through="Membership")
+
+    def __str__(self):
+        return self.name
+
+
+class Membership(models.Model):
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
+    place = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.group + " - " + self.place
