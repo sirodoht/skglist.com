@@ -459,6 +459,73 @@ a {
     border: none;
 }
 
+.places-create {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.places-create-group {
+    display: block;
+    margin-top: 16px;
+}
+
+.places-create-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.places-create-link {
+    display: inline-block;
+    background: #4dabf7;
+    color: #fff;
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.places-create-input {
+    display: block;
+    box-sizing: border-box;
+    border: 3px solid #4dabf7;
+    border-radius: 0;
+    font-size: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-appearance: none;
+}
+
+.places-create-input::placeholder {
+    color: #ccc;
+}
+
+.places-create-center {
+    text-align: center;
+}
+
+.places-create-submit {
+    background: #4dabf7;
+    color: #fff;
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border: none;
+}
+
 .places-message {
     background: #4dabf7;
     color: #fff;
