@@ -437,6 +437,7 @@ a {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    -webkit-appearance: none;
 }
 
 .places-list-input::placeholder {
