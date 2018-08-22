@@ -1,6 +1,8 @@
+from random import randint
+
 from django.contrib.auth.models import User
 
-from .models import Analytic
+from .models import Analytic, Group
 
 
 def get_client_ip(request):
@@ -21,3 +23,13 @@ def log_analytic(request):
     if request.user.is_authenticated:
         new_analytic.user = User.objects.get(id=request.user.id)
     new_analytic.save()
+
+
+def get_group_route():
+    new_route = 0
+    while True:
+        route_candidate = randint(1000, 9999)
+        if not Group.objects.filter(route=route_candidate).exists():
+            new_route = route_candidate
+            break
+    return str(new_route)
