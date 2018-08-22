@@ -10,6 +10,7 @@ class Place(models.Model):
     link = models.URLField()
     is_eat = models.BooleanField()
     is_drink = models.BooleanField()
+    is_enabled = models.BooleanField()
 
     def __str__(self):
         return self.name

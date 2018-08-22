@@ -5,7 +5,16 @@ from . import models
 
 # Place
 class PlaceAdmin(admin.ModelAdmin):
-    list_display = ("name", "address", "votes", "link", "is_eat", "is_drink", "id")
+    list_display = (
+        "name",
+        "address",
+        "votes",
+        "link",
+        "is_eat",
+        "is_drink",
+        "id",
+        "is_enabled",
+    )
 
 
 admin.site.register(models.Place, PlaceAdmin)
