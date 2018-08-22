@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="most voted places in THESSALONIKI">
+
+    <title>skg list</title>
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    <div class="grid">
+        <div class="alert" id="alert">
+            List created.
+        </div>
+
+        <a href="{% url 'main:index' %}" class="logo">
+            skg list
+        </a>
+        <div class="one">
+        </div>
+        <div class="two">
+        </div>
+        <div class="three">
+        </div>
+        <div class="four">
+        </div>
+        <div class="six">
+        </div>
+        <div class="seven">
+        </div>
+        <div class="eight">
+        </div>
+        <div class="nine">
+        </div>
+        <div class="places">
+            <div class="places-message">
+                Choose places to create list.
+            </div>
+            {% for item in places %}
+            <div class="places-item">
+                <div class="places-item-head">
+                    <a href="#" class="places-item-head-choose" data-id="{{ item.id }}">
+                        <img src="{% static 'images/select.svg' %}" alt="select icon" id="select-{{ item.id }}">
+                        <img src="{% static 'images/check.svg' %}" alt="check icon" id="check-{{ item.id }}" class="places-item-head-choose-check">
+                    </a>
+                    <div class="places-item-head-ranking">{{ forloop.counter }}</div>
+                </div>
+                <a href="{{ item.link }}" class="places-item-body">
+                    <div class="places-item-body-title">{{ item.name }}</div>
+                    <div class="places-item-body-address">{{ item.address }}</div>
+                </a>
+            </div>
+            {% endfor %}
+            <div class="places-list">
+                <input type="text" name="name" id="list-name" class="places-list-input" placeholder="List title here...">
+                <button class="places-list-submit" id="create">create list</button>
+            </div>
+        </div>
+        <div class="eat">
+            <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible.">
+                <img src="{% static 'images/cereal.svg' %}" alt="food icon">
+            </a>
+        </div>
+        <div class="five-down">
+            <a href="{% url 'main:group_create' %}" class="list-icon" title="Create your own list." style="opacity: 0;">
+                <img src="{% static 'images/list.svg' %}" alt="list icon">
+            </a>
+        </div>
+        <div class="five-up">
+        </div>
+        <div class="drink">
+            <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
+                <img src="{% static 'images/wine.svg' %}" alt="wine icon">
+            </a>
+        </div>
+    </div>
+    {% csrf_token %}
+
+    <script>
+        function getCsrf() {
+            var inputElems = document.querySelectorAll('input');
+            var csrfToken = '';
+            for (let i = 0; i < inputElems.length; ++i) {
+                if (inputElems[i].name === 'csrfmiddlewaretoken') {
+                    csrfToken = inputElems[i].value;
+                    break;
+                }
+            }
+            return csrfToken;
+        }
+
+        var placeIds = [];
+        var placeElems = document.getElementsByClassName('places-item-head-choose');
+        var i = 0;
+        for (i = 0; i < placeElems.length; i++) {
+            placeElems[i].addEventListener('click', function (event) {
+                event.preventDefault();
+                var placeId = event.target.parentNode.dataset.id;
+                if (!placeId) {
+                    return;
+                }
+                if (placeIds.indexOf(placeId) === -1) {
+                    placeIds.push(placeId);
+                    document.getElementById('select-' + placeId).style.display = 'none';
+                    document.getElementById('check-' + placeId).style.display = 'block';
+                } else {
+                    var placeIndex = placeIds.indexOf(placeId);
+                    placeIds.splice(placeIndex, 1);
+                    document.getElementById('select-' + placeId).style.display = 'block';
+                    document.getElementById('check-' + placeId).style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('create').addEventListener('click', function () {
+            submit();
+        });
+
+        function submit() {
+            if (document.getElementById('list-name').value.trim() === '') {
+                document.getElementById('list-name').value = '';
+                document.getElementById('list-name').placeholder = 'You need to type a title!';
+                return;
+            }
+            var url = document.location.origin + '/list/';
+            var xhr = new XMLHttpRequest();
+            var body = {
+                'name': document.getElementById('list-name').value,
+                'places': placeIds,
+            };
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.setRequestHeader('X-CSRFToken', getCsrf());
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('xhr.response:', xhr.response);
+                    var resData = JSON.parse(xhr.response);
+                    document.location.pathname = '/list/' + resData.route;
+                }
+            };
+            xhr.send(JSON.stringify(body));
+        }
+    </script>
+</body>
+</html>
