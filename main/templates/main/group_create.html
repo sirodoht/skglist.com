@@ -123,6 +123,9 @@
         });
 
         function submit() {
+            if (!placeIds.length) {
+                return;
+            }
             if (document.getElementById('list-name').value.trim() === '') {
                 document.getElementById('list-name').value = '';
                 document.getElementById('list-name').placeholder = 'You need to type a title!';

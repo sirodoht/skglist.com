@@ -1,6 +1,7 @@
 import datetime
 import json
 
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -64,6 +65,9 @@ def group_create(request):
             place_id = int(escape(place_char))
             place = Place.objects.get(id=place_id)
             Membership.objects.create(group=new_group, place=place)
+        group_url = "https://skglist.com/list/" + new_group.route + "/"
+        alert_message = 'Share your list:<br><a href="' + group_url + '">' + group_url + '</a>'
+        messages.success(request, alert_message)
         return JsonResponse(status=200, data={"route": new_group.route})
 
     return render(request, "main/group_create.html", {"places": places})

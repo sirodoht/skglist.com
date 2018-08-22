@@ -40,6 +40,13 @@
         <div class="nine">
         </div>
         <div class="places">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="places-share">
+                        {{ message|safe }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="places-message">
                 Click on the arrow to&nbsp;vote.
                 <br>You can vote a place once every&nbsp;24h.

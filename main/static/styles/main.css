@@ -471,6 +471,23 @@ a {
     padding-left: 5px;
 }
 
+.places-share {
+    background: #f74d4d;
+    color: #fff;
+    font-family: monospace;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.places-share a {
+    color: #fff;
+}
+
 .alert {
     position: fixed;
     top: 0;
