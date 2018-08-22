@@ -428,6 +428,7 @@ a {
     display: block;
     box-sizing: border-box;
     border: 3px solid #4dabf7;
+    border-radius: 0;
     font-size: 24px;
     padding-left: 5px;
     padding-right: 5px;
