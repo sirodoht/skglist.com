@@ -38,6 +38,14 @@
         <div class="nine">
         </div>
         <div class="places">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="places-share">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             <div class="places-message">
                 Click on the arrow to&nbsp;vote.
                 <br>You can vote a place once every&nbsp;24h.
@@ -56,6 +64,9 @@
                 </a>
             </div>
             {% endfor %}
+            <div class="places-create">
+                <a href="{% url 'main:places_create' %}" class="places-create-link">submit place</a>
+            </div>
         </div>
         <div class="eat">
             <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible.">
