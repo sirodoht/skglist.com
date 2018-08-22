@@ -12,5 +12,5 @@ urlpatterns = [
     path("drink/", views.drink, name="drink"),
     path("vote/", views.vote, name="vote"),
     path("list/", views.group_create, name="group_create"),
-    path("list/<slug:route>", views.group, name="group"),
+    path("list/<slug:route>/", views.group, name="group"),
 ]
