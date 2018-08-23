@@ -19,7 +19,7 @@ class Place(models.Model):
 class Vote(models.Model):
     date = models.DateTimeField(default=timezone.now)
     ip = models.GenericIPAddressField(null=True, blank=True)
-    place = models.ForeignKey(Place, on_delete=models.SET_NULL, blank=True, null=True)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.date)
@@ -48,8 +48,5 @@ class Group(models.Model):
 
 
 class Membership(models.Model):
-    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
-    place = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.group + " - " + self.place
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
