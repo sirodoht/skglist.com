@@ -44,7 +44,7 @@
                 Click on the arrow to&nbsp;vote.
                 <br>You can vote a place once every&nbsp;24h.
             </div>
-            {% for item in group.members.all %}
+            {% for item in group.members.all|dictsortreversed:"votes" %}
             <div class="places-item">
                 <div class="places-item-head">
                     <a href="#" class="places-item-head-vote" data-id="{{ item.id }}">
