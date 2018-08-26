@@ -11,6 +11,7 @@ class Place(models.Model):
     is_eat = models.BooleanField()
     is_drink = models.BooleanField()
     is_enabled = models.BooleanField()
+    date_added = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
