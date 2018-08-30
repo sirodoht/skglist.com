@@ -39,6 +39,7 @@ class Analytic(models.Model):
 
 class Group(models.Model):
     route = models.CharField(max_length=30)
+    slug = models.CharField(max_length=300)
     created_at = models.DateTimeField(default=timezone.now)
     name = models.CharField(max_length=100)
     visits = models.PositiveIntegerField(default=0)

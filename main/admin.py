@@ -38,7 +38,7 @@ admin.site.register(models.Vote, VoteAdmin)
 
 # Group
 class GroupAdmin(admin.ModelAdmin):
-    list_display = ("route", "name", "created_at", "visits")
+    list_display = ("route", "name", "slug", "created_at", "visits")
 
 
 admin.site.register(models.Group, GroupAdmin)
