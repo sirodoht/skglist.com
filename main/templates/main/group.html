@@ -25,7 +25,7 @@
             <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
         </div>
 
-        <a href="{% url 'main:group' group.route %}" class="logo">
+        <a href="{% url 'main:group' group.route group.slug %}" class="logo">
             {{ group.name }}
         </a>
         <div class="one">

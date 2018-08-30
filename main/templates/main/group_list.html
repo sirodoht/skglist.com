@@ -46,7 +46,7 @@
                 <div class="places-item-head">
                     <div class="places-item-head-ranking">{{ forloop.counter }}</div>
                 </div>
-                <a href="{% url 'main:group' item.route %}" class="places-item-body">
+                <a href="{% url 'main:group' item.route item.slug %}" class="places-item-body">
                     <div class="places-item-body-title">{{ item.name }}</div>
                 </a>
             </div>
