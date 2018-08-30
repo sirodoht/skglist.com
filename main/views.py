@@ -99,3 +99,9 @@ def group(request, route):
     group.visits += 1
     group.save()
     return render(request, "main/group.html", {"group": group})
+
+
+@require_safe
+def group_list(request):
+    groups = Group.objects.all().order_by('-visits')
+    return render(request, "main/group_list.html", {"groups": groups})
