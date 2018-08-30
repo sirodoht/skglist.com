@@ -2,6 +2,18 @@
 
 {% load static %}
 
+{% block title %}{{ group.name }}{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ group.name }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="skglist.com">
+<meta property="og:title" content="skg list">
+<meta property="og:description" content="{{ group.name }}">
+<meta property="og:image" content="https://skglist.com/static/images/logo.png">
+<meta property="og:url" content="https://skglist.com/">
+{% endblock %}
+
 {% block content %}
     <div class="grid">
         <div class="alert" id="alert">
