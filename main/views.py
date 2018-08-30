@@ -2,7 +2,7 @@ import datetime
 import json
 
 from django.contrib import messages
-from django.http import JsonResponse, Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.html import escape
@@ -106,5 +106,5 @@ def group(request, route):
 
 @require_safe
 def group_list(request):
-    groups = Group.objects.all().order_by('-visits')
+    groups = Group.objects.all().order_by("-visits")
     return render(request, "main/group_list.html", {"groups": groups})
