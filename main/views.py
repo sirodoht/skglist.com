@@ -2,7 +2,7 @@ import datetime
 import json
 
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.html import escape
@@ -95,7 +95,10 @@ def group_create(request):
 
 @require_safe
 def group(request, route):
-    group = Group.objects.get(route=route)
+    try:
+        group = Group.objects.get(route=route)
+    except Group.DoesNotExist:
+        raise Http404("List does not exist.")
     group.visits += 1
     group.save()
     return render(request, "main/group.html", {"group": group})
