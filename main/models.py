@@ -52,3 +52,6 @@ class Group(models.Model):
 class Membership(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.group.slug + "|" + self.place.name
