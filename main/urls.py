@@ -14,5 +14,6 @@ urlpatterns = [
     path("submit/", views.places_create, name="places_create"),
     path("featured/", views.group_list, name="group_list"),
     path("list/", views.group_create, name="group_create"),
-    path("list/<slug:route>/", views.group, name="group"),
+    path("list/<slug:route>/", views.group_redirect, name="group_redirect"),
+    path("list/<slug:route>/<slug:group_slug>/", views.group, name="group"),
 ]

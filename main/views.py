@@ -6,6 +6,7 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.html import escape
+from django.utils.text import slugify
 from django.views.decorators.http import require_http_methods, require_safe
 
 from .forms import PlaceForm
@@ -77,7 +78,9 @@ def group_create(request):
         body = request.body.decode("utf-8")
         data = json.loads(body)
         new_group = Group.objects.create(
-            name=escape(data["name"]), route=get_group_route()
+            name=escape(data["name"]),
+            route=get_group_route(),
+            slug=slugify(data["name"]),
         )
         for place_char in data["places"]:
             place_id = int(escape(place_char))
@@ -94,14 +97,25 @@ def group_create(request):
 
 
 @require_safe
-def group(request, route):
+def group(request, route, group_slug):
     try:
         group = Group.objects.get(route=route)
     except Group.DoesNotExist:
         raise Http404("List does not exist.")
+    if group.slug != group_slug:
+        return redirect("main:group", route, group.slug)
     group.visits += 1
     group.save()
     return render(request, "main/group.html", {"group": group})
+
+
+@require_safe
+def group_redirect(request, route):
+    try:
+        group = Group.objects.get(route=route)
+    except Group.DoesNotExist:
+        raise Http404("List does not exist.")
+    return redirect("main:group", route, group.slug)
 
 
 @require_safe
