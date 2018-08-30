@@ -1,5 +1,6 @@
 import datetime
 import json
+import random
 
 from django.contrib import messages
 from django.http import Http404, JsonResponse
@@ -77,10 +78,15 @@ def group_create(request):
     if request.method == "POST":
         body = request.body.decode("utf-8")
         data = json.loads(body)
+        new_slug = slugify(data["name"])
+        if not new_slug:
+            new_slug = "".join(
+                random.choices(
+                    "abdcefghkmnpqrstuvwxyzABDCEFGHKMNPQRSTUVWXYZ23456789", k=6
+                )
+            )
         new_group = Group.objects.create(
-            name=escape(data["name"]),
-            route=get_group_route(),
-            slug=slugify(data["name"]),
+            name=escape(data["name"]), route=get_group_route(), slug=new_slug
         )
         for place_char in data["places"]:
             place_id = int(escape(place_char))
