@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}skg list / submit{% endblock %}
+
 {% block content %}
     <div class="grid">
         <a href="{% url 'main:index' %}" class="logo">
@@ -59,7 +61,6 @@
                 </div>
 
                 {% csrf_token %}
-
                 <div class="places-create-center">
                     <input type="submit" value="submit" class="places-create-submit">
                 </div>
