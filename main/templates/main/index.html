@@ -15,14 +15,20 @@
             <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
         </div>
 
+        {% if request.path == '/food/' %}
+        <a href="{% url 'main:food' %}" class="logo">
+            skg list / food
+        </a>
+        {% elif request.path == '/drink/' %}
+        <a href="{% url 'main:drink' %}" class="logo">
+            skg list / drink
+        </a>
+        {% else %}
         <a href="{% url 'main:index' %}" class="logo">
             skg list
-            {% if request.path == '/food/' %}
-            / food
-            {% elif request.path == '/drink/' %}
-            / drink
-            {% endif %}
         </a>
+        {% endif %}
+
         <div class="one">
         </div>
         <div class="two">
@@ -81,6 +87,11 @@
             </a>
         </div>
         <div class="five-up">
+            {% if request.path != '/' %}
+            <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
+                <img src="{% static 'images/home.svg' %}" alt="home icon">
+            </a>
+            {% endif %}
         </div>
         <div class="drink">
             <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
