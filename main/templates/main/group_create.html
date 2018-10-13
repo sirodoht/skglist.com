@@ -14,9 +14,8 @@
             <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
         </div>
 
-        <a href="{% url 'main:index' %}" class="logo">
-            skg list
-            / new list
+        <a href="{% url 'main:group_create' %}" class="logo">
+            skg list / new list
         </a>
         <div class="one">
         </div>
@@ -69,6 +68,9 @@
             </a>
         </div>
         <div class="five-up">
+            <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
+                <img src="{% static 'images/home.svg' %}" alt="home icon">
+            </a>
         </div>
         <div class="drink">
             <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">

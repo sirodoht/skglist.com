@@ -10,7 +10,7 @@
             <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon" style="background: #ff6b6b;">
         </div>
 
-        <a href="{% url 'main:index' %}" class="logo">
+        <a href="{% url 'main:group_list' %}" class="logo">
             skg list / featured
         </a>
         <div class="one" style="background: #fff5f5;">
@@ -66,6 +66,9 @@
             </a>
         </div>
         <div class="five-up" style="background: #ff8787;">
+            <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
+                <img src="{% static 'images/home.svg' %}" alt="home icon">
+            </a>
         </div>
         <div class="drink" style="background: #ff6b6b;">
             <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
