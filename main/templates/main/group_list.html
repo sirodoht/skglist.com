@@ -7,27 +7,27 @@
 {% block content %}
     <div class="grid">
         <div class="scroll" title="Scroll down." id="scroll">
-            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
+            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon" style="background: #ff6b6b;">
         </div>
 
         <a href="{% url 'main:index' %}" class="logo">
             skg list / featured
         </a>
-        <div class="one">
+        <div class="one" style="background: #fff5f5;">
         </div>
-        <div class="two">
+        <div class="two" style="background: #ffe3e3;">
         </div>
-        <div class="three">
+        <div class="three" style="background: #ffc9c9;">
         </div>
-        <div class="four">
+        <div class="four" style="background: #ffa8a8;">
         </div>
-        <div class="six">
+        <div class="six" style="background: #ff6b6b;">
         </div>
-        <div class="seven">
+        <div class="seven" style="background: #fa5252;">
         </div>
-        <div class="eight">
+        <div class="eight" style="background: #f03e3e;">
         </div>
-        <div class="nine">
+        <div class="nine" style="background: #e03131;">
         </div>
         <div class="places">
             {% if messages %}
@@ -38,11 +38,11 @@
                 {% endfor %}
             {% endif %}
 
-            <div class="places-message">
+            <div class="places-message" style="background: #ff8787;">
                 Featured Lists. <a href="{% url 'main:group_create' %}" style="color: #fff; text-decoration: underline;">Make your own</a>.
             </div>
             {% for item in groups %}
-            <div class="places-item" style="height: 65px;">
+            <div class="places-item" style="background: #fff5f5; height: 65px;">
                 <div class="places-item-head">
                     <div class="places-item-head-ranking">{{ forloop.counter }}</div>
                 </div>
@@ -52,22 +52,22 @@
             </div>
             {% endfor %}
             <div class="places-create">
-                <a href="{% url 'main:group_create' %}" class="places-create-link">create list</a>
+                <a href="{% url 'main:group_create' %}" class="places-create-link" style="background: #ff8787;">create list</a>
             </div>
         </div>
-        <div class="eat">
+        <div class="eat" style="background: #ffa8a8;">
             <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible.">
                 <img src="{% static 'images/cereal.svg' %}" alt="food icon">
             </a>
         </div>
-        <div class="five-down">
+        <div class="five-down" style="background: #ff8787;">
             <a href="{% url 'main:group_list' %}" class="list-icon" title="Featured lists.">
                 <img src="{% static 'images/list.svg' %}" alt="list icon">
             </a>
         </div>
-        <div class="five-up">
+        <div class="five-up" style="background: #ff8787;">
         </div>
-        <div class="drink">
+        <div class="drink" style="background: #ff6b6b;">
             <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
                 <img src="{% static 'images/wine.svg' %}" alt="wine icon">
             </a>
