@@ -54,7 +54,7 @@ uwsgi --ini=uwsgi.ini -H venv/
 
 From [Open color](https://yeun.github.io/open-color/).
 
-The 9 shades of blue, for places. Light to dark.
+10 shades of blue, for places. Light to dark.
 ```
 1: #e7f5ff
 2: #d0ebff
@@ -65,9 +65,10 @@ The 9 shades of blue, for places. Light to dark.
 7: #228be6
 8: #1c7ed6
 9: #1971c2
+10: #1864ab
 ```
 
-The 9 shades of red, for lists. Light to dark.
+10 shades of red, for lists. Light to dark.
 ```
 1: #fff5f5
 2: #ffe3e3
@@ -78,6 +79,7 @@ The 9 shades of red, for lists. Light to dark.
 7: #fa5252
 8: #f03e3e
 9: #e03131
+10: #c92a2a
 ```
 
 
