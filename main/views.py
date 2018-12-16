@@ -47,10 +47,10 @@ def vote(request):
         data = json.loads(body)
         place_id = data["place"]
         place = Place.objects.get(id=place_id)
-        ip_vote = Vote.objects.filter(ip=ip, place=place).order_by("-date").first()
-        if ip_vote:
-            if ip_vote.date + datetime.timedelta(days=1) > timezone.now():
-                return JsonResponse(status=400, data={"message": "Error."})
+        # ip_vote = Vote.objects.filter(ip=ip, place=place).order_by("-date").first()
+        # if ip_vote:
+        #     if ip_vote.date + datetime.timedelta(days=1) > timezone.now():
+        #         return JsonResponse(status=400, data={"message": "Error."})
         place.votes += 1
         place.save()
         Vote(ip=ip, place=place).save()

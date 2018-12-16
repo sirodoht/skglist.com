@@ -18,7 +18,7 @@
     <div class="grid">
         <div class="alert" id="alert">
             Vote registered.
-            <br>You can vote again in 24&nbsp;hours.
+            <!-- <br>You can vote again in 24&nbsp;hours. -->
         </div>
 
         <div class="scroll" title="Scroll down." id="scroll">
@@ -54,7 +54,7 @@
             {% endif %}
             <div class="places-message">
                 Click on the arrow to&nbsp;vote.
-                <br>You can vote a place once every&nbsp;24h.
+                <!-- <br>You can vote a place once every&nbsp;24h. -->
             </div>
             {% for item in group.members.all|dictsortreversed:"votes" %}
             <div class="places-item">
