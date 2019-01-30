@@ -1,11 +1,9 @@
-import datetime
 import json
 import random
 
 from django.contrib import messages
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
-from django.utils import timezone
 from django.utils.html import escape
 from django.utils.text import slugify
 from django.views.decorators.http import require_http_methods, require_safe
