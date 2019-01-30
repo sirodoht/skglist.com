@@ -218,7 +218,7 @@ header {
 .header-content a {
     display: flex;
     line-height: 1.9;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 36px;
     color: #fff;
     white-space: nowrap;
@@ -265,7 +265,7 @@ header {
 }
 
 .places-message {
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 18px;
     text-align: center;
     margin-top: 16px;
@@ -342,7 +342,7 @@ header {
     display: flex;
     justify-content: center;
     align-self: center;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
 }
 
 .places-item-body {
@@ -384,7 +384,7 @@ header {
     cursor: pointer;
     background: #36556e;
     color: #fff;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 18px;
     text-align: center;
     margin-top: 16px;
@@ -415,7 +415,7 @@ header {
     display: inline-block;
     background: #36556e;
     color: #fff;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 18px;
     text-align: center;
     padding-top: 10px;
@@ -453,7 +453,7 @@ header {
     cursor: pointer;
     background: #36556e;
     color: #fff;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 18px;
     text-align: center;
     margin-top: 16px;
@@ -468,7 +468,7 @@ header {
 .places-share {
     background: #f74d4d;
     color: #fff;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 17px;
     text-align: center;
     margin-top: 16px;
@@ -495,7 +495,7 @@ header {
     padding-left: 16px;
     background: #36556e;
     color: #fff;
-    font-family: monospace, sans-serif;
+    font-family: "Fira Mono", monospace, sans-serif;
     font-size: 18px;
     text-align: center;
     box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.5);
