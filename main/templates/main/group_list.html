@@ -5,148 +5,121 @@
 {% block title %}skg list / featured{% endblock %}
 
 {% block content %}
-    <div class="grid">
-        <div class="scroll" title="Scroll down." id="scroll">
-            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon" style="background: #ff6b6b;">
-        </div>
+<div class="alert" id="alert">
+    Vote registered.
+</div>
 
-        <a href="{% url 'main:group_list' %}" class="logo" style="color: #c92a2a;">
+<div class="scroll" title="Scroll down." id="scroll">
+    <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
+</div>
+
+<header>
+    <div class="header-content">
+        <a href="{% url 'main:group_list' %}">
             skg list / featured
         </a>
-        <div class="one" style="background: #fff5f5;">
-        </div>
-        <div class="two" style="background: #ffe3e3;">
-        </div>
-        <div class="three" style="background: #ffc9c9;">
-        </div>
-        <div class="four" style="background: #ffa8a8;">
-        </div>
-        <div class="six" style="background: #ff6b6b;">
-        </div>
-        <div class="seven" style="background: #fa5252;">
-        </div>
-        <div class="eight" style="background: #f03e3e;">
-        </div>
-        <div class="nine" style="background: #e03131;">
-        </div>
-        <div class="places">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="places-share">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-
-            <div class="places-message" style="background: #ff8787;">
-                Featured Lists. <a href="{% url 'main:group_create' %}" style="color: #fff; text-decoration: underline;">Make your own</a>.
-            </div>
-            {% for item in groups %}
-            <div class="places-item" style="background: #fff5f5; height: 65px;">
-                <div class="places-item-head">
-                    <div class="places-item-head-ranking">{{ forloop.counter }}</div>
-                </div>
-                <a href="{% url 'main:group' item.route item.slug %}" class="places-item-body">
-                    <div class="places-item-body-title">{{ item.name }}</div>
-                </a>
-            </div>
-            {% endfor %}
-            <div class="places-create">
-                <a href="{% url 'main:group_create' %}" class="places-create-link" style="background: #ff8787;">create list</a>
-            </div>
-        </div>
-        <div class="eat" style="background: #ffa8a8;">
-            <a href="{% url 'main:food' %}" class="eat-icon" title="Food. Fancy, fast, everything edible.">
-                <img src="{% static 'images/cereal.svg' %}" alt="food icon">
-            </a>
-        </div>
-        <div class="five-down" style="background: #ff8787;">
-            <a href="{% url 'main:group_list' %}" class="list-icon" title="Featured lists.">
-                <img src="{% static 'images/list.svg' %}" alt="list icon">
-            </a>
-        </div>
-        <div class="five-up" style="background: #ff8787;">
-            <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
-                <img src="{% static 'images/home.svg' %}" alt="home icon">
-            </a>
-        </div>
-        <div class="drink" style="background: #ff6b6b;">
-            <a href="{% url 'main:drink' %}" class="drink-icon" title="Drink. Alcohol, coffee, everything drinkable.">
-                <img src="{% static 'images/wine.svg' %}" alt="wine icon">
-            </a>
-        </div>
     </div>
-    {% csrf_token %}
+</header>
 
-    <script>
-        function getCsrf() {
-            var inputElems = document.querySelectorAll('input');
-            var csrfToken = '';
-            for (let i = 0; i < inputElems.length; ++i) {
-                if (inputElems[i].name === 'csrfmiddlewaretoken') {
-                    csrfToken = inputElems[i].value;
-                    break;
-                }
+<section class="places">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="places-share">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="places-message" style="color: #ff3d3d">
+        Featured Lists. <a href="{% url 'main:group_create' %}" >Make your own</a>.
+    </div>
+
+    {% for item in groups %}
+    <div class="places-item" style="border-color: #ff3d3d; height: 75px;">
+        <div class="places-item-head" style="width: 100px;">
+            <div class="places-item-head-ranking">{{ forloop.counter }}</div>
+        </div>
+        <a href="{% url 'main:group' item.route item.slug %}" class="places-item-body">
+            <div class="places-item-body-title">{{ item.name }}</div>
+        </a>
+    </div>
+    {% endfor %}
+    <div class="places-create">
+        <a href="{% url 'main:group_create' %}" class="places-create-link" style="background: #ff3d3d;">create list</a>
+    </div>
+</section>
+
+{% csrf_token %}
+
+<script>
+    function getCsrf() {
+        var inputElems = document.querySelectorAll('input');
+        var csrfToken = '';
+        for (let i = 0; i < inputElems.length; ++i) {
+            if (inputElems[i].name === 'csrfmiddlewaretoken') {
+                csrfToken = inputElems[i].value;
+                break;
             }
-            return csrfToken;
         }
+        return csrfToken;
+    }
 
-        var voteElems = document.getElementsByClassName('places-item-head-vote');
-        var i = 0;
-        for (i = 0; i < voteElems.length; i++) {
-            voteElems[i].addEventListener('click', function (event) {
-                event.preventDefault();
-                var placeId = event.target.parentNode.dataset.id;
-                var url = document.location.origin + '/vote/';
-                var xhr = new XMLHttpRequest();
-                var body = {
-                    'place': placeId,
-                };
-                xhr.open('POST', url, true);
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                xhr.setRequestHeader('X-CSRFToken', getCsrf());
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById('alert').classList.add('alert-visible');
+    var voteElems = document.getElementsByClassName('places-item-head-vote');
+    var i = 0;
+    for (i = 0; i < voteElems.length; i++) {
+        voteElems[i].addEventListener('click', function (event) {
+            event.preventDefault();
+            var placeId = event.target.parentNode.dataset.id;
+            var url = document.location.origin + '/vote/';
+            var xhr = new XMLHttpRequest();
+            var body = {
+                'place': placeId,
+            };
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.setRequestHeader('X-CSRFToken', getCsrf());
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('alert').classList.add('alert-visible');
+                    setTimeout(function () {
+                        document.getElementById('alert').classList.add('alert-hidden');
                         setTimeout(function () {
-                            document.getElementById('alert').classList.add('alert-hidden');
-                            setTimeout(function () {
-                                document.getElementById('alert').classList.remove('alert-visible');
-                                document.getElementById('alert').classList.remove('alert-hidden');
-                            }, 200);
-                        }, 1000);
-                    }
-                };
-                xhr.send(JSON.stringify(body));
-            });
+                            document.getElementById('alert').classList.remove('alert-visible');
+                            document.getElementById('alert').classList.remove('alert-hidden');
+                        }, 200);
+                    }, 1000);
+                }
+            };
+            xhr.send(JSON.stringify(body));
+        });
+    }
+
+    function scrollToBottom() {
+        window.scroll({
+            top: document.documentElement.scrollHeight,
+            left: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    function scrollToTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    document.getElementById('scroll').addEventListener('click', scrollToBottom);
+    window.onscroll = function() {
+        if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
+            document.getElementById('scroll').removeEventListener('click', scrollToBottom);
+            document.getElementById('scroll').addEventListener('click', scrollToTop);
         }
-
-        function scrollToBottom() {
-            window.scroll({
-                top: document.documentElement.scrollHeight,
-                left: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        function scrollToTop() {
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        document.getElementById('scroll').addEventListener('click', scrollToBottom);
-        window.onscroll = function() {
-            if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
-                document.getElementById('scroll').removeEventListener('click', scrollToBottom);
-                document.getElementById('scroll').addEventListener('click', scrollToTop);
-            }
-            if (window.scrollY === 0) {
-                document.getElementById('scroll').removeEventListener('click', scrollToTop);
-                document.getElementById('scroll').addEventListener('click', scrollToBottom);
-            }
-        };
-    </script>
+        if (window.scrollY === 0) {
+            document.getElementById('scroll').removeEventListener('click', scrollToTop);
+            document.getElementById('scroll').addEventListener('click', scrollToBottom);
+        }
+    };
+</script>
 {% endblock %}

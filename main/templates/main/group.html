@@ -15,145 +15,118 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid">
-        <div class="alert" id="alert">
-            Vote registered.
-            <!-- <br>You can vote again in 24&nbsp;hours. -->
-        </div>
+<div class="alert" id="alert">
+    Vote registered.
+</div>
 
-        <div class="scroll" title="Scroll down." id="scroll">
-            <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
-        </div>
+<div class="scroll" title="Scroll down." id="scroll">
+    <img src="{% static 'images/arrow-down.svg' %}" alt="scroll down icon">
+</div>
 
-        <a href="{% url 'main:group' group.route group.slug %}" class="logo">
-            {{ group.name }}
+<header>
+    <div class="header-content">
+        <a href="{% url 'main:group' group.route group.slug %}">
+            skglist / {{ group.name }}
         </a>
-        <div class="one">
-        </div>
-        <div class="two">
-        </div>
-        <div class="three">
-        </div>
-        <div class="four">
-        </div>
-        <div class="six">
-        </div>
-        <div class="seven">
-        </div>
-        <div class="eight">
-        </div>
-        <div class="nine">
-        </div>
-        <div class="places">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="places-share">
-                        {{ message|safe }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-            <div class="places-message">
-                Click on the arrow to&nbsp;vote.
-                <!-- <br>You can vote a place once every&nbsp;24h. -->
-            </div>
-            {% for item in group.members.all|dictsortreversed:"votes" %}
-            <div class="places-item">
-                <div class="places-item-head">
-                    <a href="#" class="places-item-head-vote" data-id="{{ item.id }}">
-                        <img src="{% static 'images/arrow-up.svg' %}" alt="vote icon">
-                    </a>
-                    <div class="places-item-head-ranking">{{ forloop.counter }}</div>
-                </div>
-                <a href="{{ item.link }}" class="places-item-body">
-                    <div class="places-item-body-title">{{ item.name }}</div>
-                    <div class="places-item-body-address">{{ item.address }}</div>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="eat">
-        </div>
-        <div class="five-down">
-        </div>
-        <div class="five-up">
-            <a href="{% url 'main:index' %}" class="home-icon" title="Go to skg list homepage.">
-                <img src="{% static 'images/home.svg' %}" alt="home icon">
-            </a>
-        </div>
-        <div class="drink">
-        </div>
     </div>
-    {% csrf_token %}
+</header>
 
-    <script>
-        function getCsrf() {
-            var inputElems = document.querySelectorAll('input');
-            var csrfToken = '';
-            for (let i = 0; i < inputElems.length; ++i) {
-                if (inputElems[i].name === 'csrfmiddlewaretoken') {
-                    csrfToken = inputElems[i].value;
-                    break;
-                }
+<section class="places">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="places-share">
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% for item in group.members.all|dictsortreversed:"votes" %}
+    <div class="places-item">
+        <div class="places-item-head">
+            <a href="#" class="places-item-head-vote" data-id="{{ item.id }}">
+                <img src="{% static 'images/arrow-up.svg' %}" alt="vote icon">
+            </a>
+            <div class="places-item-head-ranking">{{ forloop.counter }}</div>
+        </div>
+        <a href="{{ item.link }}" class="places-item-body">
+            <div class="places-item-body-title">{{ item.name }}</div>
+            <div class="places-item-body-address">{{ item.address }}</div>
+        </a>
+    </div>
+    {% endfor %}
+</section>
+
+{% csrf_token %}
+
+<script>
+    function getCsrf() {
+        var inputElems = document.querySelectorAll('input');
+        var csrfToken = '';
+        for (let i = 0; i < inputElems.length; ++i) {
+            if (inputElems[i].name === 'csrfmiddlewaretoken') {
+                csrfToken = inputElems[i].value;
+                break;
             }
-            return csrfToken;
         }
+        return csrfToken;
+    }
 
-        var voteElems = document.getElementsByClassName('places-item-head-vote');
-        var i = 0;
-        for (i = 0; i < voteElems.length; i++) {
-            voteElems[i].addEventListener('click', function (event) {
-                event.preventDefault();
-                var placeId = event.target.parentNode.dataset.id;
-                var url = document.location.origin + '/vote/';
-                var xhr = new XMLHttpRequest();
-                var body = {
-                    'place': placeId,
-                };
-                xhr.open('POST', url, true);
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                xhr.setRequestHeader('X-CSRFToken', getCsrf());
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById('alert').classList.add('alert-visible');
+    var voteElems = document.getElementsByClassName('places-item-head-vote');
+    var i = 0;
+    for (i = 0; i < voteElems.length; i++) {
+        voteElems[i].addEventListener('click', function (event) {
+            event.preventDefault();
+            var placeId = event.target.parentNode.dataset.id;
+            var url = document.location.origin + '/vote/';
+            var xhr = new XMLHttpRequest();
+            var body = {
+                'place': placeId,
+            };
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.setRequestHeader('X-CSRFToken', getCsrf());
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('alert').classList.add('alert-visible');
+                    setTimeout(function () {
+                        document.getElementById('alert').classList.add('alert-hidden');
                         setTimeout(function () {
-                            document.getElementById('alert').classList.add('alert-hidden');
-                            setTimeout(function () {
-                                document.getElementById('alert').classList.remove('alert-visible');
-                                document.getElementById('alert').classList.remove('alert-hidden');
-                            }, 200);
-                        }, 1000);
-                    }
-                };
-                xhr.send(JSON.stringify(body));
-            });
+                            document.getElementById('alert').classList.remove('alert-visible');
+                            document.getElementById('alert').classList.remove('alert-hidden');
+                        }, 200);
+                    }, 1000);
+                }
+            };
+            xhr.send(JSON.stringify(body));
+        });
+    }
+
+    function scrollToBottom() {
+        window.scroll({
+            top: document.documentElement.scrollHeight,
+            left: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    function scrollToTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    document.getElementById('scroll').addEventListener('click', scrollToBottom);
+    window.onscroll = function() {
+        if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
+            document.getElementById('scroll').removeEventListener('click', scrollToBottom);
+            document.getElementById('scroll').addEventListener('click', scrollToTop);
         }
-
-        function scrollToBottom() {
-            window.scroll({
-                top: document.documentElement.scrollHeight,
-                left: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        function scrollToTop() {
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        document.getElementById('scroll').addEventListener('click', scrollToBottom);
-        window.onscroll = function() {
-            if (document.body.scrollHeight - window.innerHeight - window.scrollY === 0) {
-                document.getElementById('scroll').removeEventListener('click', scrollToBottom);
-                document.getElementById('scroll').addEventListener('click', scrollToTop);
-            }
-            if (window.scrollY === 0) {
-                document.getElementById('scroll').removeEventListener('click', scrollToTop);
-                document.getElementById('scroll').addEventListener('click', scrollToBottom);
-            }
-        };
-    </script>
+        if (window.scrollY === 0) {
+            document.getElementById('scroll').removeEventListener('click', scrollToTop);
+            document.getElementById('scroll').addEventListener('click', scrollToBottom);
+        }
+    };
+</script>
 {% endblock %}

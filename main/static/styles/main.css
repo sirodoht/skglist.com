@@ -189,189 +189,82 @@ a {
     color: #101010;
 }
 
-.grid {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 68px 68px 68px auto;
-}
-@media(max-width: 1200px) {
-    .grid {
-        grid-template-columns: 1fr 1fr 1fr 130px 130px 130px 1fr 1fr 1fr;
-    }
-}
-@media(max-width: 600px) {
-    .grid {
-        grid-template-columns: 0 1fr 1fr 130px 130px 130px 1fr 1fr 0;
-    }
-}
-@media(max-width: 500px) {
-    .grid {
-        grid-template-columns: 0 0 1fr auto auto auto 1fr 0 0;
-    }
+header {
+    width: 100%;
+    background: #36556e;
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 
-.logo {
-    grid-area: 2 / 4 / 3 / 7;
-    width: 100%;
+.header-content {
+    height: 68px;
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-content a {
+    display: flex;
+    line-height: 1.9;
     font-family: monospace;
     font-size: 36px;
-    line-height: 0.9;
-    color: #1864ab;
+    color: #fff;
+}
+
+.icons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-@media(max-width: 1300px) {
-    .logo {
-        font-size: 30px;
-    }
-}
-@media(max-width: 600px) {
-    .logo {
-        font-size: 26px;
-    }
+    margin-top: 8px;
 }
 
-.eat {
-    grid-area: 3 / 4 / 4 / 5;
-    width: 100%;
-    height: 100%;
+.icons-content {
     display: flex;
-    align-items: center;
-    justify-items: center;
-    font-family: monospace;
-    font-size: 24px;
-    color: #1864ab;
-    background: #74c0fc;
-    text-align: center;
-    align-self: center;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 560px;
+    justify-content: space-evenly;
 }
 
-.eat-icon {
-    width: 30px;
-    transform: translateY(3px);
-}
-
-.five-up {
-    grid-area: 1 / 5 / 2 / 6;
-    background: #4dabf7;
-    width: 100%;
-    height: 100%;
+.icons-content a {
     display: flex;
-    align-items: center;
-    justify-items: center;
-    font-family: monospace;
-    font-size: 24px;
-    color: #1864ab;
-    background: #4dabf7;
-    text-align: center;
-    align-self: center;
-    justify-content: center;
-}
-
-.home-icon {
-    width: 30px;
-    transform: translateY(3px);
-}
-
-.five-down {
-    grid-area: 3 / 5 / 4 / 6;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    font-family: monospace;
-    font-size: 24px;
-    color: #1864ab;
-    background: #4dabf7;
-    text-align: center;
-    align-self: center;
-    justify-content: center;
-}
-
-.list-icon {
-    width: 30px;
-    transform: translateY(3px);
-}
-
-.drink {
-    grid-area: 3 / 6 / 4 / 7;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    font-family: monospace;
-    font-size: 24px;
-    color: #1864ab;
-    background: #339af0;
-    text-align: center;
-    align-self: center;
-    justify-content: center;
-}
-
-.drink-icon {
-    width: 30px;
-    transform: translateY(3px);
-}
-
-.one {
-    grid-area: 1 / 1 / 4 / 2;
-    background: #e7f5ff;
-}
-
-.two {
-    grid-area: 1 / 2 / 4 / 3;
-    background: #d0ebff;
-}
-
-.three {
-    grid-area: 1 / 3 / 4 / 4;
-    background: #a5d8ff;
-}
-
-.four {
-    grid-area: 1 / 4 / 2 / 5;
-    background: #74c0fc;
-}
-
-.six {
-    grid-area: 1 / 6 / 2 / 7;
-    background: #339af0;
-}
-
-.seven {
-    grid-area: 1 / 7 / 4 / 8;
-    background: #228be6;
-}
-
-.eight {
-    grid-area: 1 / 8 / 4 / 9;
-    background: #1c7ed6;
-}
-
-.nine {
-    grid-area: 1 / 9 / 4 / 10;
-    background: #1971c2;
+    height: 35px;
 }
 
 .places {
-    grid-area: 4 / 4 / 5 / 7;
-    width: 100%;
+    width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+}
+
+.places-message {
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 4px;
+    padding-left: 4px;
+    margin-bottom: 16px;
+}
+
+.places-message a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .places-item {
-    background: #e7f5ff;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-right: 5px;
+    margin-bottom: 16px;
+    padding-right: 4px;
     display: flex;
     flex-direction: row;
     height: 95px;
+    border: 1px solid #204970;
+    border-radius: 2px;
 }
 
 .places-item-head {
@@ -439,13 +332,13 @@ a {
 .places-list-input {
     display: block;
     box-sizing: border-box;
-    border: 3px solid #4dabf7;
+    border: 3px solid #36556e;
     border-radius: 0;
     font-size: 24px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -458,16 +351,16 @@ a {
 
 .places-list-submit {
     cursor: pointer;
-    background: #4dabf7;
+    background: #36556e;
     color: #fff;
     font-family: monospace;
     font-size: 18px;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 16px;
+    padding-left: 16px;
     border: none;
 }
 
@@ -484,32 +377,32 @@ a {
 .places-create-group label {
     display: block;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .places-create-link {
     display: inline-block;
-    background: #4dabf7;
+    background: #36556e;
     color: #fff;
     font-family: monospace;
     font-size: 18px;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .places-create-input {
     display: block;
     box-sizing: border-box;
-    border: 3px solid #4dabf7;
+    border: 3px solid #36556e;
     border-radius: 0;
     font-size: 24px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -527,31 +420,18 @@ a {
 
 .places-create-submit {
     cursor: pointer;
-    background: #4dabf7;
+    background: #36556e;
     color: #fff;
     font-family: monospace;
     font-size: 18px;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 16px;
+    padding-left: 16px;
     border: none;
-    border-radius: 0;
-}
-
-.places-message {
-    background: #4dabf7;
-    color: #fff;
-    font-family: monospace;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 5px;
-    padding-left: 5px;
+    border-radius: 2px;
 }
 
 .places-share {
@@ -560,11 +440,13 @@ a {
     font-family: monospace;
     font-size: 17px;
     text-align: center;
-    margin-top: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 5px;
-    padding-left: 5px;
+    margin-top: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 4px;
+    padding-left: 4px;
+    margin-bottom: 16px;
+    border-radius: 2px;
 }
 
 .places-share a {
@@ -576,11 +458,11 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 15px;
-    padding-left: 15px;
-    background: #4dabf7;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    background: #36556e;
     color: #fff;
     font-family: monospace;
     font-size: 18px;
@@ -631,7 +513,7 @@ a {
     cursor: pointer;
     width: 48px;
     box-sizing: border-box;
-    background: #339af0;
+    background: #204970;
     border-radius: 50%;
     padding: 12px;
     color: #fff;
