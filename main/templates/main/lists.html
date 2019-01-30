@@ -55,48 +55,6 @@
 {% csrf_token %}
 
 <script>
-    function getCsrf() {
-        var inputElems = document.querySelectorAll('input');
-        var csrfToken = '';
-        for (let i = 0; i < inputElems.length; ++i) {
-            if (inputElems[i].name === 'csrfmiddlewaretoken') {
-                csrfToken = inputElems[i].value;
-                break;
-            }
-        }
-        return csrfToken;
-    }
-
-    var voteElems = document.getElementsByClassName('places-item-head-vote');
-    var i = 0;
-    for (i = 0; i < voteElems.length; i++) {
-        voteElems[i].addEventListener('click', function (event) {
-            event.preventDefault();
-            var placeId = event.target.parentNode.dataset.id;
-            var url = document.location.origin + '/vote/';
-            var xhr = new XMLHttpRequest();
-            var body = {
-                'place': placeId,
-            };
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.setRequestHeader('X-CSRFToken', getCsrf());
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('alert').classList.add('alert-visible');
-                    setTimeout(function () {
-                        document.getElementById('alert').classList.add('alert-hidden');
-                        setTimeout(function () {
-                            document.getElementById('alert').classList.remove('alert-visible');
-                            document.getElementById('alert').classList.remove('alert-hidden');
-                        }, 200);
-                    }, 1000);
-                }
-            };
-            xhr.send(JSON.stringify(body));
-        });
-    }
-
     function scrollToBottom() {
         window.scroll({
             top: document.documentElement.scrollHeight,
