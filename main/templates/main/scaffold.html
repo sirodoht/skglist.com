@@ -27,5 +27,12 @@
 <body>
     {% block content %}
     {% endblock %}
+
+    <script>
+        var hasVScroll = document.body.scrollHeight > document.body.clientHeight;
+        if (!hasVScroll) {
+            document.getElementById('scroll').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
