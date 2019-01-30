@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}{{ group.name }}{% endblock %}
+{% block title %}skg list // {{ group.name }}{% endblock %}
 
 {% block meta %}
 <meta name="description" content="{{ group.name }}">
@@ -25,8 +25,11 @@
 
 <header>
     <div class="header-content">
+        <a href="{% url 'main:index' %}">
+            skg list
+        </a>
         <a href="{% url 'main:group' group.route group.slug %}">
-            skglist / {{ group.name }}
+            &nbsp;// {{ group.name }}
         </a>
     </div>
 </header>

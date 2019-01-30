@@ -20,11 +20,11 @@
         </a>
         {% if request.path == '/food/' %}
         <a href="{% url 'main:food' %}">
-            &nbsp;/ food
+            &nbsp;// food
         </a>
         {% elif request.path == '/drink/' %}
         <a href="{% url 'main:drink' %}">
-            &nbsp;/ drink
+            &nbsp;// drink
         </a>
         {% endif %}
     </div>

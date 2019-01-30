@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}skg list / featured{% endblock %}
+{% block title %}skg list // featured{% endblock %}
 
 {% block content %}
 <div class="alert" id="alert">
@@ -15,8 +15,11 @@
 
 <header>
     <div class="header-content">
+        <a href="{% url 'main:index' %}">
+            skg list
+        </a>
         <a href="{% url 'main:group_list' %}">
-            skg list / featured
+            &nbsp;// featured
         </a>
     </div>
 </header>

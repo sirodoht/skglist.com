@@ -99,7 +99,7 @@ def group_create(request):
         messages.success(request, alert_message)
         return JsonResponse(status=200, data={"route": new_group.route})
 
-    return render(request, "main/group_create.html", {"places": places})
+    return render(request, "main/list_create.html", {"places": places})
 
 
 @require_safe
@@ -112,7 +112,7 @@ def group(request, route, group_slug):
         return redirect("main:group", route, group.slug)
     group.visits += 1
     group.save()
-    return render(request, "main/group.html", {"group": group})
+    return render(request, "main/list_show.html", {"group": group})
 
 
 @require_safe
@@ -127,4 +127,4 @@ def group_redirect(request, route):
 @require_safe
 def group_list(request):
     groups = Group.objects.all().order_by("-visits")
-    return render(request, "main/group_list.html", {"groups": groups})
+    return render(request, "main/lists.html", {"groups": groups})
