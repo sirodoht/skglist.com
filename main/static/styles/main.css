@@ -503,18 +503,34 @@ header {
     box-shadow: 0px 3px 14px -4px rgba(0, 0, 0, 0.5);
     opacity: 0;
 }
+@media (max-width: 700px) {
+    .alert {
+        top: unset;
+        bottom: 0;
+    }
+}
 
 .alert-visible {
-    animation: slideInDown 0.2s forwards;
+    animation: slideInDownFromTop 0.2s forwards;
     opacity: 1;
     z-index: 10;
 }
-
-.alert-hidden {
-    animation: slideOutUp 0.2s forwards;
+@media (max-width: 700px) {
+    .alert-visible {
+        animation: slideOutUpFromBottom 0.2s forwards;
+    }
 }
 
-@keyframes slideInDown {
+.alert-hidden {
+    animation: slideOutUpFromTop 0.2s forwards;
+}
+@media (max-width: 700px) {
+    .alert-hidden {
+        animation: slideInDownFromBottom 0.2s forwards;
+    }
+}
+
+@keyframes slideInDownFromTop {
     from {
         transform: translate3d(0, -100%, 0);
         visibility: visible;
@@ -525,7 +541,7 @@ header {
     }
 }
 
-@keyframes slideOutUp {
+@keyframes slideOutUpFromTop {
     from {
       transform: translate3d(0, 0, 0);
     }
@@ -533,6 +549,28 @@ header {
     to {
       visibility: hidden;
       transform: translate3d(0, -100%, 0);
+    }
+}
+
+@keyframes slideInDownFromBottom {
+    from {
+        transform: translate3d(0, 0, 0);
+        visibility: hidden;
+    }
+
+    to {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+@keyframes slideOutUpFromBottom {
+    from {
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        visibility: visible;
+        transform: translate3d(0, 0, 0);
     }
 }
 
