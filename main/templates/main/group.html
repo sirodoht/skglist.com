@@ -41,7 +41,7 @@
     {% endif %}
 
     {% for item in group.members.all|dictsortreversed:"votes" %}
-    <div class="places-item">
+    <div class="places-item" style="margin-top: 16px;">
         <div class="places-item-head">
             <a href="#" class="places-item-head-vote" data-id="{{ item.id }}">
                 <img src="{% static 'images/arrow-up.svg' %}" alt="vote icon">

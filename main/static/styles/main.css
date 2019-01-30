@@ -195,14 +195,24 @@ header {
     padding-top: 32px;
     padding-bottom: 32px;
 }
+@media (max-width: 700px) {
+    header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
 
 .header-content {
-    height: 68px;
     width: 560px;
     display: flex;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+}
+@media (max-width: 700px) {
+    .header-content {
+        width: 100%;
+    }
 }
 
 .header-content a {
@@ -211,6 +221,11 @@ header {
     font-family: monospace;
     font-size: 36px;
     color: #fff;
+}
+@media (max-width: 700px) {
+    .header-content a {
+        font-size: 26px;
+    }
 }
 
 .icons {
@@ -238,6 +253,14 @@ header {
     margin-left: auto;
     margin-right: auto;
     margin-top: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+    box-sizing: border-box;
+}
+@media (max-width: 700px) {
+    .places {
+        width: 100%;
+    }
 }
 
 .places-message {
@@ -255,16 +278,23 @@ header {
 .places-message a {
     color: inherit;
     text-decoration: underline;
+    white-space: nowrap;
+    line-height: 1.4;
 }
 
 .places-item {
+    height: 95px;
+    display: flex;
     margin-bottom: 16px;
     padding-right: 4px;
-    display: flex;
     flex-direction: row;
-    height: 95px;
     border: 1px solid #204970;
     border-radius: 2px;
+}
+@media (max-width: 700px) {
+    .places-item {
+        height: 75px;
+    }
 }
 
 .places-item-head {
